@@ -6,3 +6,6 @@ Require npcap (https://npcap.com/) to run.
 - **Packet Sniffing**: Capture and analyze network packets in real-time.
 - **ICMP Health Checker**: Monitor latency, jitter, and packet loss by pinging Google Public DNS (8.8.8.8).
 - **Interactive GUI**: User-friendly interface for viewing network statistics and sniffing control.
+
+
+![A picture showing the example view of the project](images/example.png)
