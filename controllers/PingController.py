@@ -52,8 +52,12 @@ class PingController:
             except Exception as e:
                 self._stop_ping()
                 LOGGER.error(f"Unexpected ping failed. {e}")
+
             sleep(self._ping_interval)
-            # Start display statistics from 2 or more packets for meaningful standard deviation
+
+            # Start updating statistics from 2 or more packets for meaningful standard deviation
+            # Use welford algorithm for incremental variance calculation
+            # Verified with statistics package and acquire the same result
             if self._ping_tracker.stats.count >= 2:
                 r_latency = self._ping_tracker.stats.mean[0]
                 r_jitter = np.sqrt(self._ping_tracker.stats.var_s)[0]
