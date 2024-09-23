@@ -1,0 +1,39 @@
+{
+    "version": 1, 
+    "disable_existing_loggers": false,
+    "formatters": {
+        "simple": {
+            "format": "%(levelname)s [From: %(pathname)s, L%(lineno)s, %(funcName)s]: %(message)s"
+        },
+        "file":{
+            "format": "%(asctime)s %(levelname)s [From: %(pathname)s, L%(lineno)s, %(funcName)s]: %(message)s",
+            "datefmt": "%Y-%m-%dT%H:%M:%S%z"
+        }
+    },
+    "handlers": {
+        "stream": {
+            "class": "logging.StreamHandler", 
+            "level": "DEBUG",
+            "formatter": "simple",
+            "stream": "ext://sys.stdout"
+        },
+        "file": {
+            "class": "logging.handlers.RotatingFileHandler",
+            "level": "DEBUG",
+            "formatter": "file",
+            "filename": "logs\\log.log",
+            "maxBytes": 1048576,
+            "backupCount": 3,
+            "encoding": "utf-8"
+        }
+    },
+    "loggers": {
+        "base": {
+            "level": "DEBUG",
+            "handlers": [
+                "stream",
+                "file"
+            ]
+        }
+    }
+}
